@@ -55,34 +55,46 @@ class Parser(object):
             # Select the highest scoring permitted transition
             action_taken = False
             for _, action in possible_actions:
-                if action[0] == 'shift' and len(state.stack) < 2:  # Cannot shift if only root is on the stack
+            act_type = action[0]
+
+            if act_type == 'shift':
+                if len(state.buffer) == 0:
                     continue
-                elif action[0] == 'left_arc' and len(state.stack) > 1:  # Cannot arc-left if stack is empty
-                    parent = state.stack[-1]
-                    child = state.stack[-2]
-                    state.deps.append((parent, child, 'label'))  # Replace 'label' with appropriate logic
-                    state.stack.pop()
-                    action_taken = True
-                    print(f"Action taken: {action} (left arc) between {parent} and {child}")
-                    break
-                elif action[0] == 'right_arc' and len(state.stack) > 1:  # Cannot arc-right if stack is empty
-                    child = state.stack.pop()
-                    parent = state.stack[-1]
-                    state.deps.append((parent, child, 'label'))  # Replace 'label' with appropriate logic
-                    action_taken = True
-                    print(f"Action taken: {action} (right arc) between {parent} and {child}")
-                    break
-                elif action[0] == 'shift':
-                    state.stack.append(state.buffer.pop(0))
-                    action_taken = True
-                    print(f"Action taken: {action}, moving to stack: {state.stack}")
-                    break
-
-            print(f"Current state: Stack: {state.stack}, Buffer: {state.buffer}, Dependencies: {state.deps}")
-
-            if not action_taken:
-                print("No valid actions available, terminating parsing.")
+                # shift is allowed
+                state.stack.append(state.buffer.pop(0))
+                action_taken = True
+                print(f"Action taken: {action}, moving to stack: {state.stack}")
                 break
+
+            elif act_type == 'left_arc':
+                if len(state.stack) < 2:
+                    continue
+                # Check that child is not root (index 0)
+                child = state.stack[-2]
+                if child == 0:
+                    continue
+                parent = state.stack[-1]
+                state.deps.append((parent, child, 'label'))  # TODO: Replace 'label' properly
+                state.stack.pop(-2)  # remove child from stack
+                action_taken = True
+                print(f"Action taken: {action} (left arc) between {parent} and {child}")
+                break
+
+            elif act_type == 'right_arc':
+                if len(state.stack) < 2:
+                    continue
+                child = state.stack.pop()
+                parent = state.stack[-1]
+                state.deps.append((parent, child, 'label'))  # TODO: Replace 'label' properly
+                action_taken = True
+                print(f"Action taken: {action} (right arc) between {parent} and {child}")
+                break
+
+        print(f"Current state: Stack: {state.stack}, Buffer: {state.buffer}, Dependencies: {state.deps}")
+
+        if not action_taken:
+            print("No valid actions available, terminating parsing.")
+            break
 
 
         result = DependencyStructure()
