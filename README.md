@@ -57,5 +57,12 @@ python train/train_model.py
 ```python
 python train/evaluate.py
 ```
-
+### Notes
+- Make sure to place or download all necessary datasets in the data/ directory before running training or evaluation scripts.
+- Install all dependencies listed in requirements.txt to ensure the environment is properly set up.
+- The code expects input data in CoNLL format for training and evaluation.
+- You can adjust hyperparameters and file paths directly in the scripts if needed.
+- Model checkpoint files (if generated) are not tracked by Git thanks to .gitignore.
+- It’s recommended to run the code in a Python virtual environment to avoid dependency conflicts.
+- Future improvements could include modularizing the code further by separating model architecture, data processing, and training logic into distinct modules for better scalability and easier testing.
 
