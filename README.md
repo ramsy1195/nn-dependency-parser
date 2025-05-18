@@ -45,3 +45,8 @@ python train/train_model.py
 ```python
 python train/evaluate.py
 ```
+
+## Requirements
+- Python 3.x
+- PyTorch
+- Any other dependencies listed in requirements.txt
