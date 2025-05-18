@@ -17,7 +17,8 @@ This project implements a transition-based dependency parser using an arc-standa
 |   ├── train_model.py  # Script to train the neural parser model
 │   └── evaluate.py  # Evaluate trained models on test data
 ├── requirements.txt
-└── README.md
+├── README.md
+└── .gitignore
 ```
 ## Features
 
@@ -29,24 +30,32 @@ This project implements a transition-based dependency parser using an arc-standa
 
 ## Usage
 
-### 1. Download Data
+### Requirements:
+- Python 3.x
+- PyTorch
+- Any other dependencies listed in requirements.txt
+
+Install dependencies with:
+```python
+pip install -r requiements.txt
+```
+
+### Run the Project:
+#### 1. Download Data
 Run the dataset download script:
 ```python
 python data/download_data.py
 ```
 
-### 2. Training the Model
+#### 2. Training the Model
 Run the training script:
 ```python
 python train/train_model.py
 ```
 
-### 3. Evaluating the Model
+#### 3. Evaluating the Model
 ```python
 python train/evaluate.py
 ```
 
-## Requirements
-- Python 3.x
-- PyTorch
-- Any other dependencies listed in requirements.txt
+
