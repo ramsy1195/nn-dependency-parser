@@ -1,4 +1,4 @@
-# Neural Dependency Parser
+# Neural Network Dependency Parser
 
 This project implements a transition-based dependency parser using an arc-standard transition system and a feed-forward neural network in PyTorch. It supports training and evaluation on CoNLL-formatted datasets.
 
