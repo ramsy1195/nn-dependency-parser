@@ -26,13 +26,13 @@ class DependencyModel(Module):
 
   def __init__(self, word_types, outputs):
     super(DependencyModel, self).__init__()
-    # TODO: complete for part 3
+
     self.embedding = Embedding(num_embeddings = word_types, embedding_dim = 128)
     self.hidden_layer = Linear(in_features = 128*6, out_features = 128)
     self.output_layer = Linear(in_features = 128, out_features = outputs)
 
   def forward(self, inputs):
-    # TODO: complete for part 3
+
     embedded = self.embedding(inputs)
     embedded_flattened = embedded.view(embedded.size(0), -1)
     hidden_output = self.hidden_layer(embedded_flattened)
@@ -61,7 +61,6 @@ def train(model, loader):
  
     inputs, targets = batch
     
-    #predictions = model(torch.LongTensor(inputs))
     inputs_tensor = torch.tensor(inputs, dtype=torch.long)  # Convert to LongTensor
     predictions = model(inputs_tensor)
 
