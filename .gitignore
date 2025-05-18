@@ -1,0 +1,28 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Virtual environment
+.env/
+venv/
+ENV/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# PyTorch model checkpoints (optional, if you store models locally)
+*.pt
+*.pth
+
+# Data files (if large or sensitive)
+data/*.csv
+data/*.tsv
+
+# Logs
+*.log
