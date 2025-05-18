@@ -13,7 +13,7 @@ This project implements a transition-based dependency parser using an arc-standa
 |   ├── decoder.py  # Decoder implementing arc-standard transitions
 |   ├── extract_training_data.py  # Extract training instances from parsed data
 │   └── get_vocab.py  # Vocabulary utilities for words, POS tags, labels
-├── train
+├── train/
 |   ├── train_model.py  # Script to train the neural parser model
 │   └── evaluate.py  # Evaluate trained models on test data
 ├── requirements.txt
