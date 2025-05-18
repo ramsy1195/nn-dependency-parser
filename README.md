@@ -4,21 +4,21 @@ This project implements a transition-based dependency parser using an arc-standa
 
 
 ## Project Structure
+
+```text
 ├── data/
-│   ├── train.conll
-│   ├── dev.conll
-|   ├── test.conll
-│   └── sec0.conll
-├── model/
-│   └── parser_model.py
-├── utils/
-│   └── conll_utils.py
-├── download_data.py
-├── train.py
-├── evaluate.py
+│   └── download_data.py  # Script to download required datasets
+├── parser/
+|   ├── conll_reader.py  # Functions to read CoNLL formatted data
+|   ├── decoder.py  # Decoder implementing arc-standard transitions
+|   ├── extract_training_data.py  # Extract training instances from parsed data
+│   └── get_vocab.py  # Vocabulary utilities for words, POS tags, labels
+├── train
+|   ├── train_model.py  # Script to train the neural parser model
+│   └── evaluate.py  # Evaluate trained models on test data
 ├── requirements.txt
 └── README.md
-
+```
 ## Features
 
 - Arc-standard transition system for dependency parsing
@@ -27,10 +27,21 @@ This project implements a transition-based dependency parser using an arc-standa
 - Dataset download script via `gdown`
 - Easy extensibility for additional features or parsing strategies
 
-## Setup
+## Usage
 
-### 1. Clone the repository
+### 1. Download Data
+Run the dataset download script:
+```python
+python data/download_data.py
+```
 
-```bash
-git clone https://github.com/your-username/neural-dependency-parser.git
-cd neural-dependency-parser
+### 2. Training the Model
+Run the training script:
+```python
+python train/train_model.py
+```
+
+### 3. Evaluating the Model
+```python
+python train/evaluate.py
+```
